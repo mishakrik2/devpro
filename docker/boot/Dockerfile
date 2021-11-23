@@ -10,7 +10,7 @@ RUN apk add nginx && \
     mkdir -p /var/cache/nginx && \
     chown -R www:www /var/cache/nginx && \
     chown -R www:www /var/tmp/nginx && \
-    mkdir -p/usr/share/nginx/html/
+    mkdir -p /usr/share/nginx/html/
 
 
 COPY files/default.conf /etc/nginx/http.d/
