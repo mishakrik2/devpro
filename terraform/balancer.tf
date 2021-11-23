@@ -41,20 +41,6 @@ resource "aws_alb_target_group" "back-instance" {
   vpc_id                      = "${aws_vpc.main-vpc.id}"
 }
 
-
-# Listener for back instance
-
-#resource "aws_alb_listener" "back" {
-#  load_balancer_arn = aws_alb.ec2-alb.arn
-#  port              = 80
-#  protocol          = "HTTP"
-#
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = aws_alb_target_group.back-instance.arn
-#  }
-#}
-
 # Attach target group to back instance
 
 resource "aws_alb_target_group_attachment" "myadmin" {
@@ -67,7 +53,6 @@ resource "aws_alb_target_group_attachment" "myadmin" {
 
 resource "aws_alb_listener_rule" "myadmin-listener" {
   listener_arn                = aws_alb_listener.default.arn
-  priority                    = 100
 
   action {
     type                      = "forward"
