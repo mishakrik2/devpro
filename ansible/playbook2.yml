@@ -1,0 +1,22 @@
+---
+- name: Loop test
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: test task
+    debug: msg="Hello {{ item }}"
+    loop:
+     - "Vasya"
+     - "Petya"
+     - "Masha"
+     - "Olya"
+    
+  - name: till loop
+    shell: echo -n Z >> myfile.txt && cat myfile.txt
+    register: stdout
+    delay: 2
+    retries: 10
+    until: stdout.stdout.find("ZZZZ") == false
+
+...

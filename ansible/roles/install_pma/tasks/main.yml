@@ -1,0 +1,14 @@
+---
+- name: Creates directory
+  file:
+    path: /usr/share/nginx/html/phpmyadmin
+    state: directory
+    mode: 0755
+
+- name: Download and unpack PMA
+  ansible.builtin.unarchive:
+    src: https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+    dest: /usr/share/nginx/html/phpmyadmin
+    remote_src: yes
+    extra_opts: [--strip-components=1]
+    

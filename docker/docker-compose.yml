@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  
+  front:
+    container_name: front
+    build:
+      context: boot
+    ports:
+      - 8888:80
+
+  back:
+    container_name: mariadb
+    image: mariadb:10.7
+    environment:
+     - MARIADB_ROOT_PASSWORD=12345
+    volumes:
+      - ./db_persist:/var/lib/mysql
