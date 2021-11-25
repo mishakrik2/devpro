@@ -4,6 +4,7 @@ services:
   
   front:
     container_name: front
+#    image: front
     build:
       context: boot
     ports:
