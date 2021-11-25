@@ -1,0 +1,13 @@
+[Unit]
+Description=run docker containers locally with php, nginx, mariadb, phpmyadmin
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/home/local/DO/mykhailo.krykunenko/testcloud/docker
+ExecStart=sudo /usr/bin/docker-compose -f docker-compose.yml up -d
+
+[Install]
+WantedBy=multi-user.target
