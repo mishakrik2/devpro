@@ -26,7 +26,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/ansible-slave'
-                    args '-v $WORKSPACE:/var/git -e DEFAULT_LOCAL_TMP=/var/git/tmp'
+                    args '-v $WORKSPACE:/var/git -e ANSIBLE_LOCAL_TEMP=/tmp/.ansible/tmp'
                 }
             }
 

@@ -7,4 +7,4 @@ FROM alpine:latest
 RUN apk add ansible git bash && \
     ansible-galaxy collection install amazon.aws
 
-ENV DEFAULT_LOCAL_TMP=/var/git/tmp
+ENV ANSIBLE_LOCAL_TEMP=/tmp/.ansible/tmp
