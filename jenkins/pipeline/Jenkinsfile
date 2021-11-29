@@ -10,7 +10,7 @@ pipeline {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
                     // mount workspace with pulled repository so terraform state is not lost.
-                    args '-v $WORKSPACE:/var/git'
+                    args '-v $WORKSPACE:/var/git --env-file $HOME/creds.env'
                 }
             }
             
@@ -25,3 +25,4 @@ pipeline {
         
     }
 }
+
