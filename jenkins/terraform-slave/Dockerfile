@@ -4,5 +4,5 @@ FROM alpine:latest
 
 # Install terraform and git
 
-COPY credentials.sh /credentials.sh
+COPY jenkins/terraform-slave/credentials.sh /credentials.sh
 RUN apk add terraform git bash
