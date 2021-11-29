@@ -9,12 +9,12 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args '-v /var/lib/jenkins/workspace/test-deploy/:/shared-repo'
+                    args '-v ${context.WORKSPACE}:/var/git'
                 }
             }
             
             steps {
-                sh 'echo 123'
+                sh '/bin/sh echo 123'
             }
             
         }
