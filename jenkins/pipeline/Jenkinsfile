@@ -31,8 +31,9 @@ pipeline {
             }
 
             steps {
-                sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
                 sh 'find /var/git | grep pem'
+                sh 'cd /var/git/ansible && ls -lah'
+
             }
             
         }
