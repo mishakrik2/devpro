@@ -4,5 +4,4 @@ FROM alpine:latest
 
 # Install terraform and git
 
-RUN apk add terraform git && \
-    cd /devpro/terraform && terraform init
+RUN apk add terraform git
