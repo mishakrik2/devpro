@@ -9,7 +9,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args '-v ./:/shared-repo'
+                    args '-v /var/lib/jenkins/workspace/test-deploy/:/shared-repo'
                 }
             }
             
