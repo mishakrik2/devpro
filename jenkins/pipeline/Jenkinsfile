@@ -9,13 +9,16 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args '-v $WORKSPACE:/var/git'
+                    // mount workspace with pulled repository so terraform state is not lost + store secrets in a file.
+                    args '-v $WORKSPACE:/var/git -v /home/local/DO/mykhailo.krykunenko/secret:/root/secret'
                 }
             }
             
             steps {
+                sh '/bin/sh /root/secret/credentials.sh'
                 sh 'ls -lah /var/git'
-                sh 'cd /var/git/terraform && terraform init'
+                sh 'cd /var/git/terraform && terraform init && terraform plan'
+                
             }
             
         }
