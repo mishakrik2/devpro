@@ -9,7 +9,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args '-v ${context.WORKSPACE}:/var/git'
+                    args '-v ${PWD}:/var/git'
                 }
             }
             
