@@ -14,7 +14,7 @@ pipeline {
             }
             
             steps {
-                sh '/bin/sh echo 123'
+                sh 'echo 123'
             }
             
         }
