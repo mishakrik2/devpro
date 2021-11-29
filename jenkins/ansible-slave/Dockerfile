@@ -7,4 +7,4 @@ FROM alpine:latest
 RUN apk add ansible git bash && \
     ansible-galaxy collection install amazon.aws
 
-COPY /var/lib/jenkins/ec2-rsa.pem /root/key/ec2-rsa.pem
+COPY terraform/ec2-rsa.pem /root/key/ec2-rsa.pem
