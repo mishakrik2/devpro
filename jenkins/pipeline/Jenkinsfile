@@ -4,10 +4,11 @@ pipeline {
     stages {
         
         stage('Terraform') {
+
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    dir 'devpro/terraform-slave'
+                    dir 'devpro/jenkins/terraform-slave'
                     args '-v ./:/shared-repo'
                 }
             }
