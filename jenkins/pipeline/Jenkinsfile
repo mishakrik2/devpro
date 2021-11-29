@@ -8,7 +8,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename 'Dockerfile'
-                    dir 'devpro/jenkins/terraform-slave'
+                    dir 'jenkins/terraform-slave'
                     args '-v ./:/shared-repo'
                 }
             }
