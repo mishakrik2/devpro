@@ -1,31 +1,22 @@
 pipeline {
-    
-    agent { 
-        docker {
-        image "python:latest"
-        }
-    }
-    
+    agent any
     
     stages {
         
-        stage('Build') {
-            steps {
-        sh "echo 'Build in process...'"
+        stage('Terraform') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    dir 'devpro/terraform-slave'
+                    args '-v ./:/shared-repo'
+                }
             }
-        }
-    
-        stage('Test') {
+            
             steps {
-        sh "echo 'Test in process...'"
+                sh 'echo 123'
             }
+            
         }
-    
-        stage('Deploy') {
-            steps {
-        sh "echo 'Deploy in process...'"
-        sh "python --version"
-            }
-        }
+        
     }
 }
