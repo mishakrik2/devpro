@@ -9,16 +9,29 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    // mount workspace with pulled repository so terraform state is not lost.
+                    // mount workspace with pulled repository so terraform state is not lost + pass tokens as env file
                     args '-v $WORKSPACE:/var/git --env-file $HOME/creds.env'
                 }
             }
             
             steps {
-                sh 'ls -lah /'
-                sh 'ls -lah /var/git'
                 sh 'cd /var/git/terraform && terraform init && terraform apply -auto-approve'
-                
+            }
+            
+        }
+
+        stage('Ansible') {
+
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    dir 'jenkins/ansible-slave'
+                    args '-v $WORKSPACE:/var/git'
+                }
+            }
+
+            steps {
+                sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
             }
             
         }
