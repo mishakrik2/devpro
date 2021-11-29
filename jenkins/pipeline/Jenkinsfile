@@ -14,7 +14,7 @@ pipeline {
             }
             
             steps {
-                sh 'echo 123'
+                sh 'terraform plan'
             }
             
         }
