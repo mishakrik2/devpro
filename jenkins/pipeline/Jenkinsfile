@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'ls -lah /'
                 sh 'ls -lah /var/git'
-                sh 'cd /var/git/terraform && terraform init && terraform plan'
+                sh 'cd /var/git/terraform && terraform init && terraform apply -auto-approve'
                 
             }
             

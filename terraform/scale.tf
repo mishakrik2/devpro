@@ -39,7 +39,7 @@ resource "aws_launch_configuration" "ec2_launch_config" {
   image_id                    = "${data.aws_ami.amazon-linux-2.id}"
   iam_instance_profile        = aws_iam_instance_profile.ec2-profile.name
   security_groups             = ["${aws_security_group.front_sec_group.id}"]
-  user_data                   = "${file("./files/front-bootstrap.sh")}"
+ # user_data                   = "${file("./files/front-bootstrap.sh")}"
   instance_type               = var.instance-type
   associate_public_ip_address = false
   key_name                    = var.key-name
