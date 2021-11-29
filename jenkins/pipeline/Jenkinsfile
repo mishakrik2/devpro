@@ -15,7 +15,8 @@ pipeline {
             }
             
             steps {
-                sh 'chmod +x /root/secret/credentials.sh && /bin/sh /root/secret/credentials.sh'
+                sh 'ls -lah /root/secret/'
+                sh '/bin/sh /root/secret/credentials.sh'
                 sh 'ls -lah /var/git'
                 sh 'cd /var/git/terraform && terraform init && terraform plan'
                 
