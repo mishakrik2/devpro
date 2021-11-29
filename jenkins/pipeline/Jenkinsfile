@@ -27,6 +27,7 @@ pipeline {
                     filename 'Dockerfile'
                     dir 'jenkins/ansible-slave'
                     args '-v $WORKSPACE:/var/git'
+                    sh 'find /var/git | grep pem'
                 }
             }
 
