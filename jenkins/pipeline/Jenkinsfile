@@ -15,7 +15,7 @@ pipeline {
             
             steps {
                 sh 'ls -lah /var/git'
-                sh 'cd /var/git && terraform init'
+                sh 'cd /var/git/terraform && terraform init'
             }
             
         }
