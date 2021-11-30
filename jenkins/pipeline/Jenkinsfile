@@ -31,8 +31,7 @@ pipeline {
             }
 
             steps {
-                sh 'find /tmp/.ansible/tmp | grep ec2.ini'
-                sh 'grep destination_variable ./usr/lib/python3.9/site-packages/ansible_collections/community/aws/scripts/inventory/ec2.ini'
+                sh 'find . | grep ec2.ini 2>/dev/null'
                 sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
             }
             
