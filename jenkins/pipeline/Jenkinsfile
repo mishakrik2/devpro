@@ -31,7 +31,7 @@ pipeline {
             }
 
             steps {
-                sh 'mkdir -p ansible/cp'
+                sh 'mkdir -p /.ansible/cp'
                 sh 'chmod 400 /var/git/terraform/ec2-rsa.pem'
                 sh 'stat /var/git/terraform/ec2-rsa.pem'
                 sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
