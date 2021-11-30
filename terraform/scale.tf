@@ -41,7 +41,7 @@ resource "aws_launch_configuration" "ec2_launch_config" {
   security_groups             = ["${aws_security_group.front_sec_group.id}"]
  # user_data                   = "${file("./files/front-bootstrap.sh")}"
   instance_type               = var.instance-type
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   key_name                    = var.key-name
 }
 
