@@ -8,6 +8,10 @@
 *.tfstate
 *.tfstate.*
 
+# Credentials
+
+credentials.sh
+
 # Crash log files
 crash.log
 
