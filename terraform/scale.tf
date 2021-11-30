@@ -28,7 +28,7 @@ resource "aws_key_pair" "generated" {
   public_key = tls_private_key.generated.public_key_openssh
 
   provisioner "local-exec" { # save key to pc.
-    command = "echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa.pem"
+    command = "rm -f ./ec2-rsa.pem; echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa.pem"
   }
 }
 
