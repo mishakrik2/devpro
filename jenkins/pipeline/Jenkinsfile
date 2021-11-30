@@ -26,7 +26,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/ansible-slave'
-                    args '-v $WORKSPACE:/var/git -e ANSIBLE_LOCAL_TEMP=/tmp/.ansible/ansible-tmp -e DEFAULT_LOCAL_TMP=/tmp/.ansible/default-tmp --env-file $HOME/creds.env'
+                    args '-v $WORKSPACE:/var/git -e ANSIBLE_SSH_CONTROL_PATH_DIR=/tmp/.ansible/ansible-cp -e ANSIBLE_LOCAL_TEMP=/tmp/.ansible/ansible-tmp -e DEFAULT_LOCAL_TMP=/tmp/.ansible/default-tmp --env-file $HOME/creds.env'
                 }
             }
 
