@@ -15,7 +15,7 @@ pipeline {
             }
             
             steps {
-                sh 'cd /var/git/terraform && terraform init && terraform destroy -auto-approve'
+                sh 'cd /var/git/terraform && terraform init && terraform apply -auto-approve'
             }
             
         }
