@@ -10,7 +10,7 @@ subnet_id                   = "${aws_subnet.main-subnet-public-1.id}"
 associate_public_ip_address = true
 key_name                    = var.key-name
 tags = {
-    Name = "Back instance"
+    Name = "back"
     }
 }
 
@@ -26,6 +26,6 @@ subnet_id                   = "${aws_subnet.main-subnet-public-2.id}"
 #associate_public_ip_address = true
 key_name                    = var.key-name
 tags = {
-    Name = "Bastion"
+    Name = "bastion"
     }
 }
