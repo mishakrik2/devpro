@@ -42,6 +42,7 @@ resource "aws_launch_configuration" "ec2_launch_config" {
  # user_data                   = "${file("./files/front-bootstrap.sh")}"
   instance_type               = var.instance-type
   associate_public_ip_address = false
+  public_dns                  = true
   key_name                    = var.key-name
 }
 
