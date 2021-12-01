@@ -23,7 +23,7 @@
 - name: update mysql root password for root account
   mysql_user:
     name: root
-    login_unix_socket: /var/run/mysqld/mysqld.sock
+    login_unix_socket: /var/lib/mysql/mysql.sock
     host: 'localhost'
     password: 12345
     priv: "*.*:ALL,GRANT"
