@@ -20,12 +20,6 @@
 
 # Set root pass
 
-- name: Set root user password
-  mysql_user:
-    name: root
-    password: 12345
-    check_implicit_admin: true
-
 
 - name: Create .my.cnf
   ansible.builtin.copy:
@@ -34,3 +28,9 @@
     owner: root
     group: root
     mode: '0600'
+
+- name: Set root user password
+  mysql_user:
+    name: root
+    password: 12345
+    check_implicit_admin: true
