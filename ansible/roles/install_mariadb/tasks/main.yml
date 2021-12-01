@@ -1,4 +1,13 @@
 ---
-- name: Enable PHP 8.0
+- name: Enable MariaDB
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
+
+- name: Set MySQL root Password
+  mysql_user:
+    login_host: 'localhost'
+    login_user: 'root'
+    login_password: '12345'
+    name: 'root'
+    password: '12345'
+    state: present
