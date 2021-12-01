@@ -20,13 +20,9 @@
 
 # Set root pass
 
-- name: Copying required files
-  template:
-    src: .my.cnf
-    dest: /
-    owner: root
-    group: root
-    mode: 0600
+- name: Enable MariaDB
+  command: echo -e "[client]\nuser=root\npassword=12345" > /root/my.cnf && chmod 600 /root/my.cnf && chown root:root /root/my.cnf
+
 
 - name: Set root user password
   mysql_user:
