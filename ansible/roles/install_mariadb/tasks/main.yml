@@ -28,7 +28,7 @@
 
 - name: Create .my.cnf
   template:
-   src: "files/my.cnf"
+   src: "my.cnf"
    dest: "/root/.my.cnf"
    owner: root
    group: root
