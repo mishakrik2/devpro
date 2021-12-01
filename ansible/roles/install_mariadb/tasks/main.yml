@@ -1,8 +1,16 @@
 ---
+# Install and start MariaDB
+
 - name: Enable MariaDB
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
 
+# Install pymysql
+
+- name: Install Pymysql module
+  command: pip3 install pymysql
+
+# Set root pass
 - name: Set MySQL root Password
   mysql_user:
     login_host: 'localhost'
