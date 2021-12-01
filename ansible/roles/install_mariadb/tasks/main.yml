@@ -26,10 +26,11 @@
     password: 12345
     check_implicit_admin: true
 
+
 - name: Create .my.cnf
-  template:
-   src: "my.cnf"
-   dest: "/root/.my.cnf"
-   owner: root
-   group: root
-   mode: 0600
+  ansible.builtin.copy:
+    src: "my.cnf"
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+    mode: '0600'
