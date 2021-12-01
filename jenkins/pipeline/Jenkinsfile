@@ -15,7 +15,7 @@ pipeline {
             }
             
             steps {
-                sh 'cd /var/git/terraform && terraform init && terraform apply -auto-approve'
+                sh 'cd /var/git/terraform && terraform init && terraform destroy -auto-approve'
             }
             
         }
@@ -36,6 +36,10 @@ pipeline {
                 sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
             }
             
+        }
+
+        stage ('Email') {
+
         }
         
     }
