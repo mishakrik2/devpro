@@ -23,8 +23,8 @@
 
 - name: Create .my.cnf
   ansible.builtin.copy:
-    src: "my.cnf"
-    dest: /root/.my.cnf
+    src: .my.cnf
+    dest: /
     owner: root
     group: root
     mode: '0600'
