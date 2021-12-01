@@ -19,11 +19,17 @@
     name: pymysql
 
 # Set root pass
-- name: Set MySQL root Password
+
+- name: Set root user password
   mysql_user:
-    login_host: 'localhost'
-    login_user: 'root'
-    login_password: '12345'
-    name: 'root'
-    password: '12345'
-    state: present
+    name: root
+    password: 12345
+    check_implicit_admin: true
+
+- name: Create .my.cnf
+  template:
+   src: "files/my.cnf"
+   dest: "/root/.my.cnf"
+   owner: root
+   group: root
+   mode: 0600
