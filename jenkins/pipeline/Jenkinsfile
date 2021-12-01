@@ -33,7 +33,7 @@ pipeline {
 
             steps {
                 sh 'chmod 400 /var/git/terraform/ec2-rsa.pem'
-                sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
+                sh 'cd /var/git/ansible && ansible-playbook -vvv playbook.yml'
             }
             
         }
