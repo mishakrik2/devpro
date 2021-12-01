@@ -20,12 +20,11 @@
 
 # Set root pass
 
-- name: Enable MariaDB
-  command: echo -e "[client]\nuser=root\npassword=12345" > /root/my.cnf && chmod 600 /root/my.cnf && chown root:root /root/my.cnf
-
-
-- name: Set root user password
+- name: update mysql root password for root account
   mysql_user:
     name: root
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    host: 'localhost'
     password: 12345
+    priv: "*.*:ALL,GRANT"
     check_implicit_admin: true
