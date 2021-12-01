@@ -20,14 +20,13 @@
 
 # Set root pass
 
-
-- name: Create .my.cnf
-  ansible.builtin.copy:
+- name: Copying required files
+  template:
     src: .my.cnf
     dest: /
     owner: root
     group: root
-    mode: '0600'
+    mode: 0600
 
 - name: Set root user password
   mysql_user:
