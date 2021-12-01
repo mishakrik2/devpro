@@ -1,6 +1,6 @@
 ---
 - name: Restart MariaDB
   service:
-    name: php-fpm
+    name: mariadb
     enabled: yes
     state: started
