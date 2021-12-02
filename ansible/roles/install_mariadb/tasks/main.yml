@@ -1,24 +1,18 @@
 ---
-# Install and start MariaDB
 
 - name: Enable MariaDB
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
 
-# Install py2 pip
 
 - name: Install PHP FPM and dependencies
   yum:
     name: python-pip
     state: latest
 
-# Install pymysql for py pip2
-
 - name: Install bottle python package
   pip:
     name: pymysql
-
-# Set root pass
 
 - name: update mysql root password for root account
   mysql_user:

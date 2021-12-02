@@ -9,13 +9,12 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    // mount workspace with pulled repository so terraform state is not lost + pass tokens as env file
                     args '-v $WORKSPACE:/var/git --env-file $HOME/creds.env'
                 }
             }
             
             steps {
-                sh 'cd /var/git/terraform && terraform init && terraform apply -auto-approve'
+                sh 'cd /var/git/terraform && terraform init && terraform destroy -auto-approve'
             }
             
         }
