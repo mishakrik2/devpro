@@ -14,7 +14,7 @@ pipeline {
             }
             
             steps {
-                sh 'cd /var/git/terraform && terraform init && terraform ${env.ACTION} -auto-approve'
+                sh "cd /var/git/terraform && terraform init && terraform ${env.ACTION} -auto-approve"
             }
             
         }
