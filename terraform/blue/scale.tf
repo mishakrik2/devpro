@@ -24,11 +24,11 @@ resource "tls_private_key" "generated" {
 }
 
 resource "aws_key_pair" "generated" {
-  key_name   = "ec2-rsa-fallback"       # Create key to AWS.
+  key_name   = "ec2-rsa"       # Create key to AWS.
   public_key = tls_private_key.generated.public_key_openssh
 
   provisioner "local-exec" { # save key to pc.
-    command = "rm -f ./ec2-rsa.pem; echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa-fallback.pem"
+    command = "rm -f ./ec2-rsa.pem; echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa.pem"
   }
 }
 
@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "ec2_asg" {
   name                 = "ec2-autoscale"
   depends_on           = [aws_launch_configuration.ec2_launch_config]
   launch_configuration = aws_launch_configuration.ec2_launch_config.name
-  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1-fallback.id, aws_subnet.main-subnet-public-2-fallback.id]
+  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1.id, aws_subnet.main-subnet-public-2.id]
   desired_capacity          = 2
   min_size                  = 2
   max_size                  = 2
