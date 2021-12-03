@@ -4,6 +4,9 @@
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
 
+- name: Start the MySQL service
+  action: service name=mariadb state=started
+
 - name: Install PHP FPM and dependencies
   yum:
     name: python-pip
