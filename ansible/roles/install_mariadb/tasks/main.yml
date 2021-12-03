@@ -4,7 +4,6 @@
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
 
-
 - name: Install PHP FPM and dependencies
   yum:
     name: python-pip
@@ -18,7 +17,8 @@
   mysql_user:
     name: root
     login_unix_socket: /var/lib/mysql/mysql.sock
-    host: 'localhost'
+    host: '%'
     password: 12345
     priv: "*.*:ALL,GRANT"
     check_implicit_admin: true
+

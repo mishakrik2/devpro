@@ -9,7 +9,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args '-v $WORKSPACE:/var/git --env-file $HOME/creds.env'
+                    args "-v $WORKSPACE:/var/git --env-file $HOME/creds.env ${env.TERRAFORM_EXTRA_FLAGS}"
                 }
             }
             
@@ -25,7 +25,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/ansible-slave'
-                    args '-u 0:0 -v $WORKSPACE:/var/git --env-file $HOME/creds.env'
+                    args "-u 0:0 -v $WORKSPACE:/var/git --env-file $HOME/creds.env ${env.ANSIBLE_EXTRA_FLAGS}"
                 }
             }
 
