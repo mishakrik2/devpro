@@ -24,11 +24,11 @@ resource "tls_private_key" "generated" {
 }
 
 resource "aws_key_pair" "generated" {
-  key_name   = "ec2-rsa"       # Create key to AWS.
+  key_name   = "ec2-rsa-fallback"       # Create key to AWS.
   public_key = tls_private_key.generated.public_key_openssh
 
   provisioner "local-exec" { # save key to pc.
-    command = "rm -f ./ec2-rsa.pem; echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa.pem"
+    command = "rm -f ./ec2-rsa-fallback.pem; echo '${tls_private_key.generated.private_key_pem}' > ./ec2-rsa-fallback.pem"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_key_pair" "generated" {
 
 resource "aws_launch_configuration" "ec2_launch_config" {
   image_id                    = "${data.aws_ami.amazon-linux-2.id}"
-  iam_instance_profile        = aws_iam_instance_profile.ec2-profile.name
+  iam_instance_profile        = aws_iam_instance_profile.ec2-profile-fallback.name
   security_groups             = ["${aws_security_group.front_sec_group.id}"]
  # user_data                   = "${file("./files/front-bootstrap.sh")}"
   instance_type               = var.instance-type
