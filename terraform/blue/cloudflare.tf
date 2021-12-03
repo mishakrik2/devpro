@@ -9,7 +9,7 @@ resource "cloudflare_record" "root-misha-krik-xyz" {
   zone_id   = "${cloudflare_zone.misha-krik-xyz.id}"
   name      = "@"
   # value     = "${aws_alb.ec2-alb-blue.dns_name}"
-  value     = var.color != "green" ? aws_alb.ec2-alb-blue.dns_name : aws_alb.ec2-alb-green.dns_name
+  value     = var.color != "green" ? "${aws_alb.ec2-alb-blue.dns_name}" : "${aws_alb.ec2-alb-green.dns_name}"
   type      = "CNAME"
   proxied   = true
   ttl       = 1
