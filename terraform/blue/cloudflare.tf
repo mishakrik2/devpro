@@ -8,7 +8,7 @@ resource "cloudflare_zone" "misha-krik-xyz" {
 resource "cloudflare_record" "root-misha-krik-xyz" {
   zone_id   = "${cloudflare_zone.misha-krik-xyz.id}"
   name      = "@"
-  value     = "${aws_alb.ec2-alb.dns_name}"
+  value     = "${aws_alb.ec2-alb-blue.dns_name}"
   type      = "CNAME"
   proxied   = true
   ttl       = 1
@@ -19,7 +19,7 @@ resource "cloudflare_record" "root-misha-krik-xyz" {
 resource "cloudflare_record" "www-misha-krik-xyz" {
   zone_id   = "${cloudflare_zone.misha-krik-xyz.id}"
   name      = "www"
-  value     = "${aws_alb.ec2-alb.dns_name}"
+  value     = "${aws_alb.ec2-alb-blue.dns_name}"
   type      = "CNAME"
   proxied   = true
   ttl       = 1
@@ -30,7 +30,7 @@ resource "cloudflare_record" "www-misha-krik-xyz" {
 resource "cloudflare_record" "bastion-misha-krik-xyz" {
   zone_id   = "${cloudflare_zone.misha-krik-xyz.id}"
   name      = "bastion"
-  value     = "${aws_alb.ec2-alb.dns_name}"
+  value     = "${aws_alb.ec2-alb-blue.dns_name}"
   type      = "CNAME"
   proxied   = false
   ttl       = 1
