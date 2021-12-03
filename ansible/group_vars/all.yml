@@ -1,4 +1,4 @@
 ---
 
-ansible_ssh_private_key_file: /var/git/terraform/ec2-rsa.pem
+ansible_ssh_private_key_file: /var/git/terraform/blue/ec2-rsa.pem
 ansible_user: ec2-user
