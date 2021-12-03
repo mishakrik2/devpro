@@ -14,7 +14,7 @@ pipeline {
             }
             
             steps {
-                sh "TF_VAR_color=${env.COLOR}; cd /var/git/terraform/blue && terraform init && terraform ${env.ACTION} -auto-approve"
+                sh "cd /var/git/terraform/blue && terraform init && terraform ${env.ACTION} -auto-approve -var color=${env.COLOR}"
             }
             
         }

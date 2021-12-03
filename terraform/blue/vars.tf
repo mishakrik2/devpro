@@ -43,3 +43,8 @@ variable "key-name" {
     description = "SSH Key name"
     default = "ec2-rsa"
 }
+
+variable "color" {
+    type = string
+    description = "deployment type"
+}
