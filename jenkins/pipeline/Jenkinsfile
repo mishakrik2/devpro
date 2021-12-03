@@ -30,6 +30,7 @@ pipeline {
             }
 
             steps {
+                sh 'sleep 3m' // sleep should be good if instance is created after ansible tries to deploy, which results in an error.
                 sh 'chmod 400 /var/git/terraform/blue/ec2-rsa.pem'
                 sh 'cd /var/git/ansible && ansible-playbook playbook.yml'
             }
