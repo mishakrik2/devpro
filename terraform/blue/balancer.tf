@@ -41,33 +41,75 @@ resource "aws_alb_target_group" "front-web-green" {
 
 # Create HTTP Listener for load balancer blue.
 
-resource "aws_alb_listener" "blue" {
-  load_balancer_arn = aws_alb.ec2-alb-blue.arn
-  port              = 443
-  protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate.cert.arn
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_alb_target_group.front-web-blue.arn
-  }
-}
+#resource "aws_alb_listener" "blue" {
+#  load_balancer_arn = aws_alb.ec2-alb-blue.arn
+#  port              = 443
+#  protocol          = "HTTPS"
+#  certificate_arn   = aws_acm_certificate.cert.arn
+#
+#  default_action {
+#    type             = "forward"
+#    target_group_arn = aws_alb_target_group.front-web-blue.arn
+#  }
+#}
 
 # Create HTTP Listener for load balancer green.
 
-resource "aws_alb_listener" "green" {
-  load_balancer_arn = aws_alb.ec2-alb-green.arn
-  port              = 443
-  protocol          = "HTTPS"
+#resource "aws_alb_listener" "green" {
+#  load_balancer_arn = aws_alb.ec2-alb-green.arn
+#  port              = 443
+#  protocol          = "HTTPS"
+#  certificate_arn   = aws_acm_certificate.cert.arn
+#
+#  default_action {
+#    type             = "forward"
+#    target_group_arn = aws_alb_target_group.front-web-green.arn
+#  }
+#}
+
+# Create HTTP listener for blue
+
+resource "aws_alb_listener" "blue" {
+  load_balancer_arn = aws_alb.ec2-alb-blue.arn
+  port              = 80
+  protocol          = "HTTP"
   certificate_arn   = aws_acm_certificate.cert.arn
 
   default_action {
-    type             = "forward"
-    target_group_arn = aws_alb_target_group.front-web-green.arn
+    order = 1
+    type  = "redirect"
+    redirect {
+      host        = "#{host}"
+      path        = "/#{path}"
+      port        = "443"
+      protocol    = "HTTPS"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
   }
 }
 
+# Create HTTP listener for green
 
+resource "aws_alb_listener" "green" {
+  load_balancer_arn = aws_alb.ec2-alb-green.arn
+  port              = 80
+  protocol          = "HTTP"
+  certificate_arn   = aws_acm_certificate.cert.arn
+
+  default_action {
+    order = 1
+    type  = "redirect"
+    redirect {
+      host        = "#{host}"
+      path        = "/#{path}"
+      port        = "443"
+      protocol    = "HTTPS"
+      query       = "#{query}"
+      status_code = "HTTP_301"
+    }
+  }
+}
 
 # Back instance target group blue
 resource "aws_alb_target_group" "back-instance-blue" {
