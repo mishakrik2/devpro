@@ -25,12 +25,12 @@ resource "cloudflare_record" "www-misha-krik-xyz" {
   ttl       = 1
 }
 
-# Allow https rewrites + pull origin certificate.
+# Allow https rewrites.
 
 resource "cloudflare_zone_settings_override" "misha-krik-xyz-settings" {
     zone_id = "${cloudflare_zone.misha-krik-xyz.id}"
     settings {
         automatic_https_rewrites = "on"
-        ssl = "origin_pull"
+        ssl = "full"
     }
 }
