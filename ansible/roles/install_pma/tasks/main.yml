@@ -14,7 +14,7 @@
   
 - name: Copy file with owner and permissions
   ansible.builtin.copy:
-    src: ./files/config.inc.php
+    src: config.inc.php
     dest: /usr/share/nginx/html/phpmyadmin/config.inc.php
     owner: root
     group: root
