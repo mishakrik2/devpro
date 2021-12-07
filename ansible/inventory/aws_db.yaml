@@ -1,0 +1,12 @@
+---
+plugin: aws_rds
+regions:
+  - eu-central-1
+keyed_groups:
+  - key: 'db_parameter_groups|json_query("[].db_parameter_group_name")'
+    prefix: rds_parameter_group
+  - key: engine
+    prefix: rds
+  - key: tags
+  - key: region
+...
