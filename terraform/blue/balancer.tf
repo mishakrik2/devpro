@@ -39,41 +39,40 @@ resource "aws_alb_target_group" "front-web-green" {
 }
 
 
-# Create HTTP Listener for load balancer blue.
+# Create HTTPS Listener for load balancer blue.
 
-#resource "aws_alb_listener" "blue" {
-#  load_balancer_arn = aws_alb.ec2-alb-blue.arn
-#  port              = 443
-#  protocol          = "HTTPS"
-#  certificate_arn   = aws_acm_certificate.cert.arn
-#
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = aws_alb_target_group.front-web-blue.arn
-#  }
-#}
+resource "aws_alb_listener" "https-blue" {
+  load_balancer_arn = aws_alb.ec2-alb-blue.arn
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = aws_acm_certificate.cert.arn
 
-# Create HTTP Listener for load balancer green.
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.front-web-blue.arn
+  }
+}
 
-#resource "aws_alb_listener" "green" {
-#  load_balancer_arn = aws_alb.ec2-alb-green.arn
-#  port              = 443
-#  protocol          = "HTTPS"
-#  certificate_arn   = aws_acm_certificate.cert.arn
-#
-#  default_action {
-#    type             = "forward"
-#    target_group_arn = aws_alb_target_group.front-web-green.arn
-#  }
-#}
+# Create HTTPS Listener for load balancer green.
+
+resource "aws_alb_listener" "https-green" {
+  load_balancer_arn = aws_alb.ec2-alb-green.arn
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = aws_acm_certificate.cert.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.front-web-green.arn
+  }
+}
 
 # Create HTTP listener for blue
 
-resource "aws_alb_listener" "blue" {
+resource "aws_alb_listener" "http-blue" {
   load_balancer_arn = aws_alb.ec2-alb-blue.arn
   port              = 80
   protocol          = "HTTP"
-  certificate_arn   = aws_acm_certificate.cert.arn
 
   default_action {
     order = 1
@@ -91,12 +90,10 @@ resource "aws_alb_listener" "blue" {
 
 # Create HTTP listener for green
 
-resource "aws_alb_listener" "green" {
+resource "aws_alb_listener" "http-green" {
   load_balancer_arn = aws_alb.ec2-alb-green.arn
   port              = 80
   protocol          = "HTTP"
-  certificate_arn   = aws_acm_certificate.cert.arn
-
   default_action {
     order = 1
     type  = "redirect"
@@ -148,7 +145,7 @@ resource "aws_alb_target_group_attachment" "myadmin-green" {
 # Additional listener rule for /phpmyadmin path blue
 
 resource "aws_alb_listener_rule" "myadmin-listener-blue" {
-  listener_arn                = aws_alb_listener.blue.arn
+  listener_arn                = aws_alb_listener.https-blue.arn
   priority                    = 100
 
   action {
@@ -166,7 +163,7 @@ resource "aws_alb_listener_rule" "myadmin-listener-blue" {
 # Additional listener rule for /phpmyadmin path green 
 
 resource "aws_alb_listener_rule" "myadmin-listener-green" {
-  listener_arn                = aws_alb_listener.green.arn
+  listener_arn                = aws_alb_listener.https-green.arn
   priority                    = 100
 
   action {
