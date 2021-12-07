@@ -36,3 +36,8 @@ resource "aws_route_table_association" "main-crta-public-subnet-2"{
     subnet_id = "${aws_subnet.main-subnet-public-2.id}"
     route_table_id = "${aws_route_table.main-public-crt.id}"
 }
+
+# Add db subnet group
+ resource "aws_db_subnet_group" "db" {
+    subnet_ids = [aws_subnet.main-subnet-public-1.id, aws_subnet.main-subnet-public-2.id]
+}  

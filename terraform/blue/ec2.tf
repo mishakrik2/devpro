@@ -63,7 +63,7 @@ tags = {
 # Create RDS instance
 
 resource "aws_db_instance" "default" {
-  db_subnet_group_name = "${aws_subnet.main-subnet-public-2.id}"
+  db_subnet_group_name = "${aws_db_subnet_group.db.id}"
   allocated_storage    = 10
   engine               = "mysql"
   engine_version       = "5.7"
