@@ -42,8 +42,8 @@ resource "aws_alb_target_group" "front-web-green" {
 
 resource "aws_alb_listener" "blue" {
   load_balancer_arn = aws_alb.ec2-alb-blue.arn
-  port              = 80
-  protocol          = "HTTP"
+  port              = 443
+  protocol          = "HTTPS"
 
   default_action {
     type             = "forward"
@@ -56,8 +56,8 @@ resource "aws_alb_listener" "blue" {
 
 resource "aws_alb_listener" "green" {
   load_balancer_arn = aws_alb.ec2-alb-green.arn
-  port              = 80
-  protocol          = "HTTP"
+  port              = 443
+  protocol          = "HTTPS"
 
   default_action {
     type             = "forward"
@@ -134,4 +134,18 @@ resource "aws_alb_listener_rule" "myadmin-listener-green" {
       values                  = ["/phpmyadmin*"]
     }
   }
+}
+
+# Add SSL cert for blue listener
+
+resource "aws_lb_listener_certificate" "blue_listener_cert" {
+  listener_arn    = "${aws_alb_listener.blue.arn}"
+  certificate_arn = "${acme_certificate.certificate.arn}"
+}
+
+# Add SSL cert for green listener
+
+resource "aws_lb_listener_certificate" "green_listener_cert" {
+  listener_arn    = "${aws_alb_listener.green.arn}"
+  certificate_arn = "${acme_certificate.certificate.arn}"
 }
