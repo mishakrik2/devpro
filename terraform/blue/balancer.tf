@@ -136,16 +136,18 @@ resource "aws_alb_listener_rule" "myadmin-listener-green" {
   }
 }
 
+
+
 # Add SSL cert for blue listener
 
 resource "aws_lb_listener_certificate" "blue_listener_cert" {
-  listener_arn    = "${aws_alb_listener.blue.arn}"
-  certificate_arn = "${acme_certificate.certificate.arn}"
+  listener_arn    = aws_alb_listener.blue.arn
+  certificate_arn = aws_acm_certificate.cert.arn
 }
 
 # Add SSL cert for green listener
 
 resource "aws_lb_listener_certificate" "green_listener_cert" {
-  listener_arn    = "${aws_alb_listener.green.arn}"
-  certificate_arn = "${acme_certificate.certificate.arn}"
+  listener_arn    = aws_alb_listener.green.arn
+  certificate_arn = aws_acm_certificate.cert.arn
 }
