@@ -43,8 +43,3 @@ output "alb_dns_name_green" {
       description = "DNS name of load balancer green"
       value       = aws_alb.ec2-alb-green.dns_name
 }
-
-output "rds_public_ip" {
-      description = "RDS instance public IP"
-      value       = aws_db_instance.default.public_ip
-}
