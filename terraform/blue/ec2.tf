@@ -59,3 +59,19 @@ tags = {
     Name = "bastion"
     }
 }
+
+# Create RDS instance
+
+resource "aws_db_instance" "default" {
+  db_subnet_group_name = "${aws_subnet.main-subnet-public-2.id}"
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t2.micro"
+  vpc_security_group_ids = [aws_security_group.back_sec_group.id]
+  name                 = "mydb"
+  username             = "atym"
+  password             = "12345678"
+  parameter_group_name = "default.mysql5.7"
+  skip_final_snapshot  = true
+}
