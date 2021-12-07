@@ -53,7 +53,6 @@ resource "aws_alb_listener" "blue" {
   }
 }
 
-
 # Create HTTP Listener for load balancer green.
 
 resource "aws_alb_listener" "green" {
