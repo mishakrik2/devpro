@@ -4,6 +4,7 @@
 
 - name: Install PHP FPM and dependencies
   yum:
+    lock_timeout: 120
     name: "{{ item }}"
     state: latest
   loop:
