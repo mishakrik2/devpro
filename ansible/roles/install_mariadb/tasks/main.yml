@@ -20,7 +20,7 @@
   mysql_user:
     name: root
     login_unix_socket: /var/lib/mysql/mysql.sock
-    host: '%'
+    host: 'localhost'
     password: 12345
     priv: "*.*:ALL,GRANT"
     check_implicit_admin: true

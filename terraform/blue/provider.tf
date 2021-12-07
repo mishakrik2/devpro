@@ -7,6 +7,9 @@ terraform {
     cloudflare = {
       source = "cloudflare/cloudflare"
     }
+    acme = {
+      source = "vancluever/acme"
+    }
   }
   required_version = ">= 0.14.9"
 }
@@ -21,4 +24,8 @@ provider "aws" {
 # Defined as env variables
 
 provider "cloudflare" {
+}
+
+provider "acme" {
+  server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
 }

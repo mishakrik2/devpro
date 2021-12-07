@@ -11,4 +11,11 @@
     dest: /usr/share/nginx/html/phpmyadmin
     remote_src: yes
     extra_opts: [--strip-components=1]
-    
+  
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: ./files/config.inc.php
+    dest: /usr/share/nginx/html/phpmyadmin/config.inc.php
+    owner: root
+    group: root
+    mode: '0644'
