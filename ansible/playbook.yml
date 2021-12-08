@@ -6,12 +6,14 @@
   - role: install_nginx
     tags: nginx
 
-#- name: Install PHP-FPM to all groups
-#  hosts: all
-#  become: true
-#  roles:
-#  - role: install_fpm
-#    tags: fpm
+- name: Install PHP-FPM to all groups
+  hosts: all
+  become: true
+  roles:
+  - role: install_fpm
+    tags: fpm
+
+# Looks like mysql is no longer needed. Will remove this block later.
 
 #- name: Install  MariaDB to back group 
 #  hosts: tag_name_back
