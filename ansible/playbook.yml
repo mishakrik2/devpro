@@ -6,19 +6,19 @@
   - role: install_nginx
     tags: nginx
 
-- name: Install PHP-FPM to all groups
-  hosts: all
-  become: true
-  roles:
-  - role: install_fpm
-    tags: fpm
+#- name: Install PHP-FPM to all groups
+#  hosts: all
+#  become: true
+#  roles:
+#  - role: install_fpm
+#    tags: fpm
 
-- name: Install  MariaDB to back group 
-  hosts: tag_name_back
-  become: true
-  roles:
-  - role: install_mariadb
-    tags: mariadb
+#- name: Install  MariaDB to back group 
+#  hosts: tag_name_back
+#  become: true
+#  roles:
+#  - role: install_mariadb
+#    tags: mariadb
 
 - name: Install PMA to back group 
   hosts: tag_name_back
