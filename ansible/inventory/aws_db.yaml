@@ -1,5 +1,4 @@
----
-plugin: aws_rds
+plugin: amazon.aws.aws_rds
 regions:
   - eu-central-1
 keyed_groups:
@@ -9,4 +8,3 @@ keyed_groups:
     prefix: rds
   - key: tags
   - key: region
-...

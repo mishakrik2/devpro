@@ -1,0 +1,8 @@
+plugin: aws_rds
+regions:
+  - eu-central-1
+keyed_groups:
+  - prefix: tag_name
+    key: tags.Name
+hostnames:
+ - endpoint.address
