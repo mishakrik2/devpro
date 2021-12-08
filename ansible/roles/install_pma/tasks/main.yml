@@ -13,7 +13,7 @@
     extra_opts: [--strip-components=1]
 
 - name: get db hostname via aws cli
-  command: aws rds describe-db-instances --query DBInstances[0].Endpoint.Address
+  command: aws rds describe-db-instances --region eu-central-1 --query DBInstances[0].Endpoint.Address
   register: db_hostname
   
 - name: Create PMA config from j2 template
