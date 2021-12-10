@@ -13,15 +13,6 @@
   - role: install_fpm
     tags: fpm
 
-# Looks like mysql is no longer needed. Will remove this block later.
-
-#- name: Install  MariaDB to back group 
-#  hosts: tag_name_back
-#  become: true
-#  roles:
-#  - role: install_mariadb
-#    tags: mariadb
-
 - name: Install PMA to back group 
   hosts: tag_name_back
   become: true

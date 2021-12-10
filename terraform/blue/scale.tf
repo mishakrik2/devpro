@@ -50,7 +50,7 @@ resource "aws_autoscaling_group" "ec2_asg_blue" {
   name                 = "ec2-autoscale-blue"
   depends_on           = [aws_launch_configuration.ec2_launch_config]
   launch_configuration = aws_launch_configuration.ec2_launch_config.name
-  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1.id, aws_subnet.main-subnet-public-2.id]
+  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1.id]
   desired_capacity          = 2
   min_size                  = 2
   max_size                  = 2
@@ -68,7 +68,7 @@ resource "aws_autoscaling_group" "ec2_asg_green" {
   name                 = "ec2-autoscale-green"
   depends_on           = [aws_launch_configuration.ec2_launch_config]
   launch_configuration = aws_launch_configuration.ec2_launch_config.name
-  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1.id, aws_subnet.main-subnet-public-2.id]
+  vpc_zone_identifier  = [aws_subnet.main-subnet-public-1.id]
   desired_capacity          = 2
   min_size                  = 2
   max_size                  = 2
