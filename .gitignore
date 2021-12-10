@@ -46,3 +46,4 @@ terraform.rc
 # Do not push keys
 
 *.pem
+*.pub
