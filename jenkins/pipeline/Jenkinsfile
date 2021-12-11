@@ -1,5 +1,18 @@
 pipeline {
     agent any
+
+    parameters {
+    choice(
+      name: 'action',
+      choices: ['apply', 'destroy'],
+      description: 'Terraform action. Can be destroy or apply.'
+      )
+    choice(
+      name: 'color',
+      choices: ['DEV', 'QA', 'UAT', 'PROD'],
+      description: 'Passing the Environment'
+      )
+    }
     
     stages {
         
