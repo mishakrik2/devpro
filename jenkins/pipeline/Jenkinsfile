@@ -9,8 +9,8 @@ pipeline {
       )
     choice(
       name: 'color',
-      choices: ['DEV', 'QA', 'UAT', 'PROD'],
-      description: 'Passing the Environment'
+      choices: ['blue', 'green'],
+      description: 'Deployment type set as current. Can be blue or green.'
       )
     }
     
