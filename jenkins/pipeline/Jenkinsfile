@@ -12,6 +12,7 @@ pipeline {
       choices: ['blue', 'green'],
       description: 'Deployment type set as current. Can be blue or green.'
       )
+    
     }
     
     stages {
@@ -22,7 +23,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/terraform-slave'
-                    args "-v $WORKSPACE:/var/git --env-file $HOME/creds.env ${env.TERRAFORM_EXTRA_FLAGS}"
+                    args "-v $WORKSPACE:/var/git --env-file $HOME/creds.env"
                 }
             }
             
@@ -38,7 +39,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'jenkins/ansible-slave'
-                    args "-u 0:0 -v $WORKSPACE:/var/git --env-file $HOME/creds.env ${env.ANSIBLE_EXTRA_FLAGS}"
+                    args "-u 0:0 -v $WORKSPACE:/var/git --env-file $HOME/creds.env"
                 }
             }
 
