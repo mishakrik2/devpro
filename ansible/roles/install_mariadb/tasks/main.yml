@@ -1,5 +1,4 @@
 ---
-
 - name: Enable MariaDB
   command: amazon-linux-extras install -y mariadb10.5
   notify: Restart MariaDB
