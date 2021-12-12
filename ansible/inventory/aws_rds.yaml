@@ -4,5 +4,3 @@ regions:
 keyed_groups:
   - prefix: tag_name
     key: tags.Name
-hostnames:
- - endpoint.address
