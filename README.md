@@ -17,7 +17,7 @@ After having its job done, container dies freeing up the resources.
 
 - How should it be deployed?
 
-1) The only required software on the host machine is Jenkins and Docker. Make sure that Docker is connected to Jenkins via a UNIX socket and. This should be done in the configuration of Docker plugin in Jenkins itself.
+1) The only required software on the host machine is Jenkins and Docker. Make sure that Docker is connected to Jenkins via a UNIX socket. This should be done in the configuration of Docker plugin in Jenkins itself.
 2) Create a new pipeline item in Jenkins.
 3) In the 'Pipeline' section choose 'Pipeline script from SCM', Git as SCM, use this repository's URL: https://github.com/mishakrik2/devpro and use a pre-existing key. You can obtain the key by contacting me directly.
 4) Branch should be specified as */jenkins
