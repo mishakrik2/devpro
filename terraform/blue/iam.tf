@@ -56,7 +56,7 @@ resource "aws_iam_role_policy" "ec2-policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
-    }
+    },
     {
       "Effect": "Allow",
       "Principal": {
