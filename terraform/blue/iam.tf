@@ -16,7 +16,7 @@ resource "aws_iam_role" "ec2-role" {
   })
 
   tags = {
-    tag-key = "tag-value"
+    tag-key = "ec2-role"
   }
 }
 
@@ -74,12 +74,12 @@ EOT
 
 resource "aws_iam_policy_attachment" "ssm_attach_core" {
   name       = "test-attachment"
-  roles      = [aws_iam_role.ec2-role.name]
+  role      = "${aws_iam_role.ec2-role.name}"
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_policy_attachment" "ssm_attach_role" {
   name       = "test-attachment"
-  roles      = [aws_iam_role.ec2-role.name]
+  role      = "${aws_iam_role.ec2-role.name}"
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
 }
