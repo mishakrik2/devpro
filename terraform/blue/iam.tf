@@ -57,13 +57,6 @@ resource "aws_iam_role_policy" "ec2-policy" {
       "Effect": "Allow",
       "Resource": "*"
     },
-    {
-      "Action": [
-        "sts:*"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
     
   ]
 }
@@ -71,6 +64,16 @@ EOT
 }
 
 
-#      "Principal": {
-#        "Service": "ec2.amazonaws.com"
-#      },
+# Attach Policies to Instance Role
+
+resource "aws_iam_policy_attachment" "ssm_attach_core" {
+  name       = "test-attachment"
+  roles      = [aws_iam_role.ec2-role.id]
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_policy_attachment" "ssm_attach_role" {
+  name       = "test-attachment"
+  roles      = [aws_iam_role.ec2-role.id]
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+}
