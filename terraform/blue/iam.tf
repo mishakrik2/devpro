@@ -58,14 +58,19 @@ resource "aws_iam_role_policy" "ec2-policy" {
       "Resource": "*"
     },
     {
+      "Action": [
+        "sts:*"
+      ],
       "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
+      "Resource": "*"
     }
     
   ]
 }
 EOT
 }
+
+
+#      "Principal": {
+#        "Service": "ec2.amazonaws.com"
+#      },
